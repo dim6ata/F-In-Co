@@ -7,6 +7,8 @@ These transactions are associated with specific contacts.
 
 All the data is persisted in an SQLite database. 
 
+Project is developed via .NetFramework using XAML for visual elements and C# for backend. 
+
 ### Application Screenshots: 
 
   - Account Selected:
