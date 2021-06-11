@@ -1,0 +1,152 @@
+﻿<Window x:Class="ENTERPRISE_CWK2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ENTERPRISE_CWK2"
+        xmlns:controllers="clr-namespace:ENTERPRISE_CWK2.ViewControllers"
+        xmlns:views="clr-namespace:ENTERPRISE_CWK2.ViewControllers"       
+        mc:Ignorable="d" 
+        d:DesignHeight="600" d:DesignWidth="900"
+        Title="F-In-Co"
+        Style="{StaticResource windowStyle}">
+
+    <!--Sets up Data Templates for changes between individual views--><!--
+    <Window.Resources>
+
+    </Window.Resources>-->
+
+
+    <!--Creates grid for entire page - 4 columns by 7 rows-->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--used to setup background for view box of navigation panel-->
+        <Border Grid.Row="0" Grid.RowSpan="7" Background="{StaticResource GreenColor}">
+
+            <!--viewbox is used to scale all elements in navigation panel-->
+            <Viewbox>
+                <!--Stack panel sets element groups of nav bar vertically one below the other-->
+                <StackPanel Width="300">
+
+
+                    <!--1. Logo button-->
+                    <Button x:Name="homeButton" Style="{StaticResource LogoButton}" Click="Home_Clicked" IsEnabled="False">
+                        <Image Source="/ImageResources/logo_small.png"></Image>
+                    </Button>
+
+
+                    <!--2. Balance label-->
+                    <Viewbox>
+                        <StackPanel Orientation="Horizontal">
+
+                            <Label HorizontalAlignment="Left" Content="Balance:"/>
+                            <Label x:Name="balanceLabel" HorizontalAlignment="Center">£123,567.4</Label>
+
+                        </StackPanel>
+
+                    </Viewbox>
+
+                    <!--view box that is responsible for resizing buttons grid-->
+                    <Viewbox>
+                        <!--Creates a grid for buttons-->
+                        <Grid Grid.IsSharedSizeScope="True">
+                            <!--2 columns-->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition SharedSizeGroup="a"/>
+                                <ColumnDefinition SharedSizeGroup="a"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--3 rows-->
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <!--Buttons inside grid-->
+                            <Button x:Name="accountsButton" Style="{DynamicResource PrimaryButton}" 
+                                    Grid.Row="0" Grid.Column="0"  Click="Account_Clicked" >Accounts</Button>
+                            <Button x:Name="incomeButton" Style="{DynamicResource PrimaryButton}" 
+                                    Grid.Row="1" Grid.Column="0"  Click="IncomeButton_Click"> New Income</Button>
+                            <Button x:Name="reportButton" Style="{DynamicResource PrimaryButton}" 
+                                    Grid.Row="2" Grid.Column="0"  Click="ReportButton_Click" >Report</Button>
+                            <Button x:Name="contactsButton" Style="{DynamicResource PrimaryButton}"
+                                    Grid.Row="0" Grid.Column="1"  Click="ContactsButton_Click" >Contacts</Button>
+                            <Button x:Name="expensesButton" Style="{DynamicResource PrimaryButton}" 
+                                    Grid.Row="1" Grid.Column="1"  Click="ExpensesButton_Click" > New Expense</Button>
+                            <Button x:Name="predictionButton" Style="{DynamicResource PrimaryButton}" 
+                                    Grid.Row="2" Grid.Column="1" Click="PredictionButton_Click" >Prediction</Button>
+
+                        </Grid>
+
+                    </Viewbox>
+
+                    <!--Viewbox that contains and resizes Calendar -->
+                    <Viewbox>
+                        <Calendar Style="{StaticResource CalendarStyle}" CalendarItemStyle="{DynamicResource CustomCalendarItemStyle}"
+                                  CalendarDayButtonStyle="{DynamicResource CustomCalendarDayButtonStyle}"/>
+                    </Viewbox>
+
+                    <!--<DatePicker Style="{StaticResource DateSelector}"></DatePicker>-->
+
+                    <!--User section - user panel button, logout button -->
+                    <Viewbox Visibility="Visible">
+                        <!--change to collapsed if user is not implemented-->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <Label Grid.Column="0" VerticalAlignment="Center">User:</Label>
+
+
+                            <Button x:Name="userProfileButton" Grid.Column="1" Click="UserProfileButton_Click" Style="{StaticResource appButton}">
+                                <Image Source="/ImageResources/user_sq.png"></Image>
+                            </Button>
+
+                            <Button x:Name="logoutButton" Grid.Column="2" Click="LogoutButton_Click" Style="{StaticResource appButton}">
+                                <Image Source="/ImageResources/switch.png"></Image>
+                            </Button>
+                        </Grid>
+                    </Viewbox>
+
+
+                </StackPanel>
+
+            </Viewbox>
+        </Border>
+
+        <!-- loads Home page (user control) when loading main view-->
+        <!--<controllers:HomePageView Grid.Column="1" Grid.RowSpan="7" Grid.ColumnSpan="3"></controllers:HomePageView>-->
+
+
+        <!--Used to swap between views from main menu-->
+        <ContentControl Grid.Row="0" Grid.Column="1" Grid.RowSpan="7" Grid.ColumnSpan="3" Content="{Binding}"/>
+
+    </Grid>
+
+
+
+</Window>

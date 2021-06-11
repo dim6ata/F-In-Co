@@ -1,0 +1,42 @@
+﻿<Window x:Class="ENTERPRISE_CWK2.ViewControllers.NotificationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ENTERPRISE_CWK2.ViewControllers"
+        mc:Ignorable="d"
+        Title="Notification" Height="325" Width="425"
+        Background="{StaticResource YellowColor}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="0" Source="/ImageResources/logo_small.png"/>
+        <Border Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <WrapPanel HorizontalAlignment="Center">
+                <Label HorizontalContentAlignment="Center" >
+                    <TextBlock x:Name="messageTextBlock" HorizontalAlignment="Center" FontSize="20" TextWrapping="Wrap" TextAlignment="Center"></TextBlock>
+                   </Label>
+            </WrapPanel>
+        </Border>
+
+        <Border Grid.Row="2">
+            <Viewbox>
+                <StackPanel Orientation="Horizontal" x:Name="notificationStackPanel">
+                    <Button x:Name="checkNotificationButton" BorderBrush="{StaticResource YellowColor}" BorderThickness="0" Width="60" Height="60">
+                        <Image  Source="/ImageResources/check_no_bg.png"/>
+                    </Button>
+                    <Button x:Name="cancelNotificationButton" BorderBrush="{StaticResource YellowColor}" BorderThickness="0" Width="60" Height="60">
+                        <Image  Source="/ImageResources/Back_Button_Vio.png"/>
+                    </Button>
+                    
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        
+    </Grid>
+</Window>

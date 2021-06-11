@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="ENTERPRISE_CWK2.ViewControllers.FormTemplate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ENTERPRISE_CWK2.ViewControllers"
+             mc:Ignorable="d" 
+              d:DesignHeight="600" d:DesignWidth="675"
+             Style="{StaticResource userControlStyle}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+
+        </Grid.RowDefinitions>
+
+        <!--TOP STACK PANEL-->
+
+        <Viewbox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" 
+                VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
+            <Label x:Name="titleLabel" Style="{StaticResource largeLabelStyle}"></Label>
+        </Viewbox>
+
+        <Viewbox Grid.Row="0" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <StackPanel x:Name="addAccountStackPanel" 
+                            VerticalAlignment="Center" Orientation="Horizontal" >
+
+                <!--THIS IS WHERE THE BACK BUTTON IS PUT-->
+            </StackPanel>
+        </Viewbox>
+
+        <Grid x:Name="labelGrid" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" 
+                    Margin="0,0,10,0" Grid.RowSpan="8" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <!--<Label Grid.Row="0" Content="Account nameHolder" Style="{StaticResource formLabelStyle}"/>
+            <Label Grid.Row="1" Content="Account Holder" Style="{StaticResource formLabelStyle}"/>
+            <Label Grid.Row="2" Content="Account Holder" Style="{StaticResource formLabelStyle}"/>
+            <Label Grid.Row="3" Content="Account Holder" Style="{StaticResource formLabelStyle}"/>-->
+        </Grid>
+
+        <Grid x:Name="textBoxGrid" VerticalAlignment="Center" Grid.Row="1" Grid.Column="3" Grid.RowSpan="8" Grid.ColumnSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <!--<TextBox Grid.Row="0" Style="{StaticResource formTextBoxStyle}">Donovan Daley</TextBox>
+            <TextBox Grid.Row="1" Style="{StaticResource formTextBoxStyle}">Donovan Daley</TextBox>
+            <TextBox Grid.Row="2" Style="{StaticResource formTextBoxStyle}">Donovan Daley</TextBox>
+            <ComboBox Style="{StaticResource formComboBoxStyle}" Grid.Row="3" Background="White"></ComboBox>-->
+
+        </Grid>
+        <Viewbox Grid.Row="9" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="3">
+        <StackPanel x:Name="confirmButtonStackPanel" VerticalAlignment="Center" HorizontalAlignment="Center">
+            
+        </StackPanel>
+        </Viewbox>
+
+    </Grid>
+
+</UserControl>

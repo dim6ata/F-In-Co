@@ -1,0 +1,140 @@
+﻿<UserControl x:Class="ENTERPRISE_CWK2.ViewControllers.AccountsCtrl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ENTERPRISE_CWK2.ViewControllers"
+             xmlns:custom="clr-namespace:ENTERPRISE_CWK2.Utility"
+             mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="675"
+             Style="{StaticResource userControlStyle}">
+
+    <!--<Viewbox>-->
+    <DockPanel>
+        <Grid DockPanel.Dock="Top">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <!--10 rows-->
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+
+            <!--ACCOUNT LABEL-->
+            <Viewbox Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left">
+                <Label Style="{StaticResource largeLabelStyle}" >Accounts</Label>
+            </Viewbox>
+            <!--SMALL ACCOUNT BUTTONS-->
+            <Viewbox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right">
+                <StackPanel x:Name="accButtonsStackPanel" Orientation="Horizontal">
+                    <!--THIS IS WHERE BUTTONS WILL BE ASSIGNED-->
+                </StackPanel>
+            </Viewbox>
+
+            <!--ACCOUNT BUTTONS ROWS-->
+            <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2" Padding="5,0,5,0">
+                <Viewbox HorizontalAlignment="Left" >
+
+                    <!--Stack panel to keep individual account elements horizontally aligned-->
+                    <StackPanel x:Name="accountsHolderStackPanel" Orientation="Horizontal">
+
+                        <!--Accessing custom account button designed in style --> 
+                        <!--PLACEHOLDER - added programmatically -->
+                        <!--<custom:AccountCustomCtrl/>-->
+
+
+                    </StackPanel>
+
+                </Viewbox>
+            </Border>
+
+            <Grid Grid.Column="0" Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Viewbox Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left">
+                    
+                        <Label Name="transactionLabel" Visibility="Hidden" Style="{StaticResource subSectionLabelStyle}" >Transactions:</Label>
+                        
+                </Viewbox>
+
+                <Border Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Padding="15" VerticalAlignment="Center">
+                <Viewbox>
+                    <ComboBox Name="transactionsComboBox" Height="30" Width="100" 
+                              HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                              FontSize="10"
+                              SelectionChanged="ComboBox_SelectionChanged" Visibility="Hidden"
+                          SelectedValuePath="Content" Foreground="{StaticResource GreenColor}" 
+                          Style="{DynamicResource CustomComboBoxStyle}">
+                        <ComboBoxItem x:Name="viewAllItem" IsSelected="True">View All</ComboBoxItem>
+                        <ComboBoxItem x:Name="viewIncomeItem">View Income</ComboBoxItem>
+                        <ComboBoxItem x:Name="viewExpenseItem">View Expenses</ComboBoxItem>
+                    </ComboBox>
+                </Viewbox>
+                </Border>
+
+            </Grid>
+
+            <StackPanel x:Name="transactionButtonStackPanel" Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2">
+                
+            </StackPanel>
+            <!--TRANSACTIONS LABEL ROW-->
+            
+
+            <!--COMBO BOX-->
+            <!--<Border Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" Padding="20">
+            <Viewbox VerticalAlignment="Center">
+                <ComboBox Name="transactionsComboBox" SelectionChanged="ComboBox_SelectionChanged" Visibility="Hidden"
+                          SelectedValuePath="Content" Foreground="{StaticResource VioletColor}" 
+                          BorderBrush="{StaticResource GreenColor}"
+                          BorderThickness="2">
+                    <ComboBoxItem x:Name="viewAllItem" IsSelected="True">View All</ComboBoxItem>
+                    <ComboBoxItem x:Name="viewIncomeItem">View Income</ComboBoxItem>
+                    <ComboBoxItem x:Name="viewExpenseItem">View Expenses</ComboBoxItem>
+                </ComboBox>
+            </Viewbox>
+            </Border>-->
+
+            <!--LIST ROWS-->
+            <!--<Viewbox x:Name="listViewBox" Visibility="Hidden" Grid.Row="4" Grid.RowSpan="6" Grid.ColumnSpan="3" Margin="10,0,10,0" VerticalAlignment="Top">-->
+                <!--<ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible" >-->
+                    <DataGrid Grid.Row="4" Grid.RowSpan="6" Grid.ColumnSpan="3" Margin="10,0,10,0" 
+                      x:Name="accountDataGrid" Visibility="Hidden"
+                        SelectionChanged="AccountDataGrid_SelectionChanged"
+                          Style="{StaticResource dataGridStyle}">
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="Type" Binding="{Binding Path=TransType}" Width="auto"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Path=TransContact.ContactName}" Width="2*"/>
+                    <DataGridTextColumn Header="Date" Binding="{Binding Path=TransDate, StringFormat=d}" Width="*"/>
+                    <DataGridTextColumn Header="Account" Binding="{Binding Path=TransContact.ContactAccNum}" Width="*"/>
+                    <DataGridTextColumn Header="Reference" Binding="{Binding Path=TransReference}" Width="2*"/>
+                    <DataGridTextColumn Header="Amount" Binding="{Binding Path=TransAmountString}" Width="*"/>
+
+                        </DataGrid.Columns>
+
+
+
+                    </DataGrid>
+                <!--</ScrollViewer>-->
+            <!--</Viewbox>-->
+        </Grid>
+    </DockPanel>
+
+</UserControl>
